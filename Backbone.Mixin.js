@@ -49,7 +49,7 @@
      * instance.method();         // залогируется 'origin method' и 'mixed method'
      * </code>
      *
-     * @example Простое использование
+     * @example Условное смешивание
      * <code class="javascript">
      * var Origin = Backbone.View.extend({
      *     method: function(){
