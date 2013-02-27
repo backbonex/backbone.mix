@@ -30,7 +30,7 @@
                 mixin.initialize = function () {
                     this._super();
                     return init.apply(this, arguments);
-                }
+                };
             }
 
             Class = Class.extend(mixin);
