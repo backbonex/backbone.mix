@@ -49,8 +49,12 @@
         }
     };
 
+    /**
+     * @param {...string} message
+     * @param {string} [type]
+     */
     Backbone.Model.prototype.log =
         Backbone.Collection.prototype.log =
         Backbone.Router.prototype.log =
-        Backbone.View.prototype.log = function(){};
+        Backbone.View.prototype.log = function(message, type){};
 })(Backbone);
