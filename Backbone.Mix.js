@@ -29,8 +29,28 @@
             options = {};
         }
 
+        /**
+         * @public
+         * @type {Object} mixing prototype
+         */
         this.proto = proto;
+
+        /**
+         * @public
+         * @type {Array.<Object|Backbone.Mixin>}
+         */
         this.dependencies = options.dependencies || [];
+    };
+
+    /**
+     * Creates a new class based on instance's constructor and mixes self to it. After that this class decorates the
+     * instance.
+     * @param {Object} instance
+     * @returns {Object}
+     */
+    Mixin.prototype.decorate = function (instance) {
+        var MixedClass = instance.constructor.mix(this);
+        return MixedClass.decorate(instance);
     };
 
     var checkForSuper = /\b_super\b/;
