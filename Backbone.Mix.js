@@ -57,6 +57,7 @@
 
     /**
      * @returns {Function}
+     * @throws {Error} if mixin is not an instance of object
      */
     var mix = function (/**{Object|Backbone.Mixin} mixin1, ..*/) {
         var Class = this;
@@ -65,6 +66,10 @@
             if (mixin instanceof Mixin) {
                 Class = mix.apply(Class, mixin.dependencies);
                 mixin = mixin.proto;
+            }
+
+            if (!_.isObject(mixin)) {
+                throw new Error('Mixin must be an object');
             }
 
             if (mixin.initialize && !checkForSuper.test(mixin.initialize.toString())) {
