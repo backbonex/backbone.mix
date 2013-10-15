@@ -42,8 +42,6 @@
          */
         this.dependencies = options.dependencies || [];
 
-        staticProps = staticProps || {};
-
         _.extend(this, staticProps);
     };
 
