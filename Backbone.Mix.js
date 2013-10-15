@@ -22,8 +22,9 @@
      * @param {Object} [options]
      * @param {Array.<Object|Backbone.Mixin>} [options.dependencies]
      * @param {Object} proto
+     * @param {Object} [staticProps]
      */
-    var Mixin = Backbone.Mixin = function (options, proto) {
+    var Mixin = Backbone.Mixin = function (options, proto, staticProps) {
         if (!proto) {
             proto = options;
             options = {};
@@ -40,6 +41,8 @@
          * @type {Array.<Object|Backbone.Mixin>}
          */
         this.dependencies = options.dependencies || [];
+
+        _.extend(this, staticProps);
     };
 
     /**
