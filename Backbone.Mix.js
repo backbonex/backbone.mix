@@ -75,6 +75,10 @@
                 throw new Error('Mixin must be an object');
             }
 
+            if (Class.mixed && Class.mixed.indexOf(mixin) != -1){
+                return;
+            }
+
             if (mixin.initialize && !checkForSuper.test(mixin.initialize.toString())) {
                 var init = mixin.initialize;
                 mixin.initialize = function () {
@@ -83,7 +87,12 @@
                 };
             }
 
-            Class = Class.extend(mixin);
+            Class = Class.extend(mixin, {
+                mixed: Class.mixed ? _.clone(Class.mixed) : []
+            });
+
+            Class.mixed.push(mixin);
+
         });
 
         return Class;
