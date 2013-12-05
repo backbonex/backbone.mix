@@ -100,3 +100,12 @@
 
     Backbone.Model.mix = Backbone.Collection.mix = Backbone.Router.mix = Backbone.View.mix = Backbone.History.mix = mix;
 })(Backbone);
+
+if (typeof define === 'function' && typeof define.amd === 'object') {
+    define([
+//        'js-vendors/js/Backbone/Backbone',
+//        'js-vendors/js/underscore/underscore'
+    ], function () {
+        return Backbone.Mixin;
+    });
+}
