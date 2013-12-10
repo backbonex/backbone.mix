@@ -102,9 +102,10 @@
 })(Backbone);
 
 if (typeof define === 'function' && typeof define.amd === 'object') {
-    define([
-//        'js-vendors/js/Backbone/Backbone',
-//        'js-vendors/js/underscore/underscore'
+    define( 'vendors/Backbone/Backbone.Mix',
+        [
+//        'vendors/Backbone/Backbone',
+//        'vendors/underscore/underscore'
     ], function () {
         return Backbone.Mixin;
     });
