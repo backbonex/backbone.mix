@@ -1,5 +1,5 @@
 /**
- * @fileOverview mixin for Backbone
+ * @fileOverview mix static method for Backbone classes
  * @example Usage
  * <code class="javascript">
  * var Editable = {
@@ -15,46 +15,8 @@
  * });
  * </code>
  */
-(function (Backbone) {
-    /**
-     * @class Backbone.Mixin
-     * @constructor
-     * @param {Object} [options]
-     * @param {Array.<Object|Backbone.Mixin>} [options.dependencies]
-     * @param {Object} proto
-     * @param {Object} [staticProps]
-     */
-    var Mixin = Backbone.Mixin = function (options, proto, staticProps) {
-        if (!proto) {
-            proto = options;
-            options = {};
-        }
-
-        /**
-         * @public
-         * @type {Object} mixing prototype
-         */
-        this.proto = proto;
-
-        /**
-         * @public
-         * @type {Array.<Object|Backbone.Mixin>}
-         */
-        this.dependencies = options.dependencies || [];
-
-        _.extend(this, staticProps);
-    };
-
-    /**
-     * Creates a new class based on instance's constructor and mixes self to it. After that this class decorates the
-     * instance.
-     * @param {Object} instance
-     * @returns {Object}
-     */
-    Mixin.prototype.decorate = function (instance) {
-        var MixedClass = instance.constructor.mix(this);
-        return MixedClass.decorate(instance);
-    };
+define(['Backbone', 'underscore', 'vendors/Backbone/Backbone.Mixin'], function (Backbone, _, Mixin) {
+    "use strict";
 
     var checkForSuper = /\b_super\b/;
 
@@ -75,7 +37,7 @@
                 throw new Error('Mixin must be an object');
             }
 
-            if (Class.mixed && Class.mixed.indexOf(mixin) != -1){
+            if (Class.mixed && Class.mixed.indexOf(mixin) != -1) {
                 return;
             }
 
@@ -99,14 +61,4 @@
     };
 
     Backbone.Model.mix = Backbone.Collection.mix = Backbone.Router.mix = Backbone.View.mix = Backbone.History.mix = mix;
-})(Backbone);
-
-if (typeof define === 'function' && typeof define.amd === 'object') {
-    define( 'vendors/Backbone/Backbone.Mix',
-        [
-//        'vendors/Backbone/Backbone',
-//        'vendors/underscore/underscore'
-    ], function () {
-        return Backbone.Mixin;
-    });
-}
+});
