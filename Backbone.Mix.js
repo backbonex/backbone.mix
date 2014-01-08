@@ -15,7 +15,12 @@
  * });
  * </code>
  */
-define(['Backbone', 'underscore', 'vendors/Backbone/Backbone.Mixin'], function (Backbone, _, Mixin) {
+define([
+    'Backbone',
+    'underscore',
+    './Mixin',
+    'vendors/Backbone/Backbone-Super'
+], function (Backbone, _, Mixin) {
     "use strict";
 
     var checkForSuper = /\b_super\b/;
@@ -24,7 +29,7 @@ define(['Backbone', 'underscore', 'vendors/Backbone/Backbone.Mixin'], function (
      * @returns {Function}
      * @throws {Error} if mixin is not an instance of object
      */
-    var mix = function (/**{Object|Backbone.Mixin} mixin1, ..*/) {
+    var mix = function (/**{Object|Mixin} mixin1, ..*/) {
         var Class = this;
 
         _(arguments).forEach(function (mixin) {

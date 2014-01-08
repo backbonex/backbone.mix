@@ -1,6 +1,4 @@
-define([
-    'underscore'
-], function (_) {
+define(['underscore'], function (_) {
     /**
      * @class Mixin
      * @constructor
@@ -45,5 +43,4 @@ define([
     };
 
     return Mixin;
-
 });
