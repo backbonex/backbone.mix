@@ -19,7 +19,7 @@ define([
     'Backbone',
     'underscore',
     './Mixin',
-    'vendors/Backbone/Backbone-Super'
+    'BackboneSuper'
 ], function (Backbone, _, Mixin) {
     "use strict";
 
