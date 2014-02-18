@@ -29,7 +29,7 @@ define([
      * @returns {Function}
      * @throws {Error} if mixin is not an instance of object
      */
-    var mix = function (/**{Object|Mixin} mixin1, ..*/) {
+    function mix(/**{Object|Mixin} mixin1, ..*/) {
         var Class = this;
 
         _(arguments).forEach(function (mixin) {
@@ -63,7 +63,22 @@ define([
         });
 
         return Class;
-    };
+    }
+
+    /**
+     * Filters mixins from the passed arguments and mixes it into current class
+     * @param {Arguments} args
+     * @returns {Function}
+     */
+    function mixArguments(args) {
+        var mixins = Array.prototype.filter.call(args, function (arg) {
+            return arg instanceof Mixin;
+        });
+
+        return mix.apply(this, mixins);
+    }
 
     Backbone.Model.mix = Backbone.Collection.mix = Backbone.Router.mix = Backbone.View.mix = Backbone.History.mix = mix;
+    Backbone.Model.mixArguments = Backbone.Collection.mixArguments = Backbone.Router.mixArguments =
+        Backbone.View.mixArguments = Backbone.History.mixArguments = mixArguments;
 });
