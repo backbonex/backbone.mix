@@ -10,6 +10,7 @@
  *
  * var Article = Backbone.Model.mix(Editable).extend({
  *     initialize: function(){
+ *         this._super();
  *         this.edit();
  *     }
  * });
