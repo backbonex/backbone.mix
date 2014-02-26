@@ -28,9 +28,10 @@ define([
 
     /**
      * @returns {Function}
+     * @param {...Mixin|object} mixin
      * @throws {Error} if mixin is not an instance of object
      */
-    function mix(/**{Object|Mixin} mixin1, ..*/) {
+    function mix(mixin) {
         var Class = this;
 
         _(arguments).forEach(function (mixin) {
