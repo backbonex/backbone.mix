@@ -24,8 +24,6 @@ define([
 ], function (Backbone, _, Mixin) {
     "use strict";
 
-    var checkForSuper = /\b_super\b/;
-
     /**
      * @returns {Function}
      * @param {...Mixin|object} mixin
@@ -46,14 +44,6 @@ define([
 
             if (Class.mixed && Class.mixed.indexOf(mixin) != -1) {
                 return;
-            }
-
-            if (mixin.initialize && !checkForSuper.test(mixin.initialize.toString())) {
-                var init = mixin.initialize;
-                mixin.initialize = function () {
-                    this._super();
-                    return init.apply(this, arguments);
-                };
             }
 
             Class = Class.extend(mixin, {
