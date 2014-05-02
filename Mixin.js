@@ -1,4 +1,4 @@
-define(['underscore'], function (_) {
+define(['underscore', 'Backbone', 'vendors/Backbone/Backbone.Redefine'], function (_, Backbone) {
     /**
      * @class Mixin
      * @constructor
@@ -40,6 +40,13 @@ define(['underscore'], function (_) {
     Mixin.prototype.decorate = function (instance) {
         var MixedClass = instance.constructor.mix(this);
         return MixedClass.decorate(instance);
+    };
+
+    Mixin.prototype.redefine = function () {
+        Backbone.Model.redefine.apply({
+            prototype: this.proto
+        }, arguments);
+        return this;
     };
 
     return Mixin;
