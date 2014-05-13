@@ -18,6 +18,7 @@ define([
             /**
              * @public
              * @see {@link Backbone.Model.decorate}
+             * @returns {*}
              */
             onDecorate: function () {
                 origin.onDecorate.apply(this, arguments);
