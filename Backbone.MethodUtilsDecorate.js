@@ -22,6 +22,7 @@ define([
             onDecorate: function () {
                 origin.onDecorate.apply(this, arguments);
                 this._wrapMethods();
+                return this;
             }
         };
     };
