@@ -19,8 +19,7 @@
 define([
     'Backbone',
     'underscore',
-    './Mixin',
-    'BackboneSuper'
+    './Mixin'
 ], function (Backbone, _, Mixin) {
     "use strict";
 
@@ -29,10 +28,10 @@ define([
      * @param {...Mixin|object} mixin
      * @throws {Error} if mixin is not an instance of object
      */
-    function mix(mixin) {
+    Backbone.Model.mix = Backbone.Collection.mix = Backbone.Router.mix = Backbone.View.mix = Backbone.History.mix = function mix (mixin) {
         var Class = this;
 
-        _(arguments).forEach(function (mixin) {
+        Array.prototype.forEach.call(arguments, function (mixin) {
             if (mixin instanceof Mixin) {
                 Class = mix.apply(Class, mixin.dependencies);
                 mixin = mixin.proto;
@@ -47,7 +46,7 @@ define([
             }
 
             Class = Class.extend(mixin, {
-                mixed: Class.mixed ? _.clone(Class.mixed) : []
+                mixed: Class.mixed ? Class.mixed.slice(0) : []
             });
 
             Class.mixed.push(mixin);
@@ -55,22 +54,19 @@ define([
         });
 
         return Class;
-    }
+    };
 
     /**
      * Filters mixins from the passed arguments and mixes it into current class
      * @param {Arguments} args
      * @returns {Function}
      */
-    function mixArguments(args) {
-        var mixins = Array.prototype.filter.call(args, function (arg) {
-            return arg instanceof Mixin;
-        });
-
-        return mix.apply(this, mixins);
-    }
-
-    Backbone.Model.mix = Backbone.Collection.mix = Backbone.Router.mix = Backbone.View.mix = Backbone.History.mix = mix;
     Backbone.Model.mixArguments = Backbone.Collection.mixArguments = Backbone.Router.mixArguments =
-        Backbone.View.mixArguments = Backbone.History.mixArguments = mixArguments;
+        Backbone.View.mixArguments = Backbone.History.mixArguments = function (args) {
+            var mixins = Array.prototype.filter.call(args, function (arg) {
+                return arg instanceof Mixin;
+            });
+
+            return this.mix.apply(this, mixins);
+        };
 });
