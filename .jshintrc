@@ -1,0 +1,24 @@
+{
+  "bitwise": true,
+  "camelcase": true,
+  "curly": true,
+  "forin": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "noempty": true,
+  "undef": true,
+  "unused": "vars",
+  "regexdash": true,
+  "sub": true,
+  "browser": true,
+  "jquery": true,
+  "supernew": true,
+  "globals": {
+    "define": false,
+    "require": false,
+    "console": false,
+    "requirejs": false
+  }
+}

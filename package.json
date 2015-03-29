@@ -1,0 +1,33 @@
+{
+  "name": "backbone.mix",
+  "version": "1.0.0",
+  "description": "Mixins for Backbone",
+  "main": "lib/Backbone.Mix.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/jscoverage lib && ./node_modules/.bin/mocha-browser tests/tests.html && rm -rf lib-cov",
+    "cov": "./node_modules/.bin/jscoverage lib && ./node_modules/.bin/mocha-browser tests/tests.html -R html-cov > /tmp/report.html && gnome-open /tmp/report.html",
+    "coveralls": "./node_modules/.bin/jscoverage lib && mocha-browser tests/tests.html -R lcov | ./node_modules/.bin/coveralls && rm -rf lib-cov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/backbonex/backbone.mix.git"
+  },
+  "keywords": [
+    "backbone",
+    "mixin",
+    "inheritance"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/backbonex/backbone.mix/issues"
+  },
+  "devDependencies": {
+    "jscoverage": "~0.5.9",
+    "coveralls": "~2.11.2",
+    "mocha-browser": "~0.2.0"
+  }
+}
