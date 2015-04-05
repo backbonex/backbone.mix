@@ -47,6 +47,7 @@ define([
             this.describe('Mixing with bad arguments', this._checkAllowedMixingArguments);
             this.describe('Common mixing', this._checkCommonMixing);
             this.describe('Mixing with dependencies', this._checkMixingWithDependencies);
+            this.describe('Static properties for mixins', this._checkStaticProperties);
         },
 
         /**
@@ -141,6 +142,16 @@ define([
 
                 expect(Class.mixed).to.eql([Mixin1, Mixin2.proto, Mixin3.proto]);
                 expect(new Class().prop).to.be(2);
+            });
+        },
+
+        /**
+         * @private
+         */
+        _checkStaticProperties: function () {
+            this.it('should be applied to mixins', function () {
+                var mixin = new Mixin({}, {}, {staticProp: 'prop'});
+                expect(mixin.staticProp).to.be('prop');
             });
         }
     });
