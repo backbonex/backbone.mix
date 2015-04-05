@@ -144,5 +144,4 @@ Tmp Class with M as a prototype
   |
 Class B
 ```
-Mix your brain?
-===============
+### Mix your brain?
