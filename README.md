@@ -34,9 +34,9 @@ var Article = Backbone.Model.mix(
     WithLogger
 ).extend( ... );
 ```
-Mixing to inherited class
+Mixing to child class
 -------------------------
-`mix` as any other static method of Backbone classes inherits well, so you can use it with child classes
+`mix` is inherited as well as any other static method of Backbone classes, so you can use it with child classes
 ```js
 var Post = Article.mix(WithComments).extend( ... );
 ```
@@ -72,7 +72,7 @@ Inclusion
 ---------
 You have two ways to include the script
 ### Using globals
-Just add script tags with `Mixin` and `Backbone.Mix` right after Backbone like this:
+Just add script tags with `Mixin` and `Backbone.Mix` right after Backbone:
 ```html
 <script src="path/to/backbone.js"></script>
 <script src="path/to/Mixin.js"></script>
@@ -108,7 +108,7 @@ require([
     });
 });
 ```
-Add `Mixin` to dependencies when you need to create complex mixin
+Add `Mixin` to the dependencies when you need to create a complex mixin
 ```js
 define([
     'path/to/Mixin'
