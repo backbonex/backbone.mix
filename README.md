@@ -5,6 +5,8 @@ Mixins implementation for Backbone
 [![Build Status](https://travis-ci.org/backbonex/backbone.mix.svg?branch=master)](https://travis-ci.org/backbonex/backbone.mix)
 [![Coverage Status](https://coveralls.io/repos/backbonex/backbone.mix/badge.svg?branch=master)](https://coveralls.io/r/backbonex/backbone.mix?branch=master)
 
+### [Read my post about concept >>>](http://jifeon.blogspot.ru/2015/04/mixins-for-javascript-classes.html)
+
 Quick start with mixing
 -----------------------
 Mixin can be a simple object
