@@ -1,6 +1,6 @@
 {
   "name": "backbone.mix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/backbonex/backbone.mix",
   "authors": [
     "jifeon <balakirev.andrey@gmail.com>",
@@ -24,12 +24,12 @@
   ],
   "dependencies": {
     "backbone": "~1.1.2",
-    "jquery": "~2.1.1",
-    "mocha-oop-wrapper": "~1.0.0"
+    "jquery": "~2.1.1"
   },
   "devDependencies": {
     "mocha": "~2.0.1",
     "requirejs": "~2.1.15",
-    "expect": "~0.3.1"
+    "expect": "~0.3.1",
+    "mocha-oop-wrapper": "~1.0.0"
   }
 }
